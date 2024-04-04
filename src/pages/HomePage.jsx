@@ -14,7 +14,8 @@ const HomePage = () => {
                 setIsLoading(true);
                 const response = await fetch('http://localhost:9001/api/coins');
                 const data = await response.json();
-                setCoins(data);
+                const sortedData = data.sort((a, b) => parseFloat(b.current_price) - parseFloat(a.current_price));
+                setCoins(sortedData);
             } catch (error) {
                 console.error('Error fetching coins:', error);
             } finally {
