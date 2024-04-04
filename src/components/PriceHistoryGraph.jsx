@@ -10,7 +10,11 @@ const PriceHistoryGraph = ({ coinId }) => {
             try {
                 const response = await fetch(`http://localhost:9001/api/history/${coinId}`);
                 const data = await response.json();
-                setPriceHistory(data);
+                
+                const thirtyMinutesAgo = new Date(new Date().getTime() - (30 * 60 * 1000));
+                const filteredData = filterDataForThreeMinuteIntervals(data, thirtyMinutesAgo);
+
+                setPriceHistory(filteredData);
             } catch (error) {
                 console.error('Error fetching price history:', error);
             }
@@ -18,6 +22,21 @@ const PriceHistoryGraph = ({ coinId }) => {
 
         fetchPriceHistory();
     }, [coinId]);
+
+    const filterDataForThreeMinuteIntervals = (data, startTime) => {
+        let result = [];
+        let lastTime = startTime;
+
+        for (let entry of data) {
+            const entryTime = new Date(entry.timestamp);
+            if (entryTime >= lastTime) {
+                result.push(entry);
+                lastTime = new Date(entryTime.getTime() + 3 * 60000); // Add 3 minutes
+            }
+        }
+
+        return result;
+    };
 
     const chartData = {
         labels: priceHistory.map(entry => new Date(entry.timestamp).toLocaleTimeString()),
