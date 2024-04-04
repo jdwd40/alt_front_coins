@@ -22,6 +22,10 @@ const MarketOverview = () => {
         return <Box>Loading market data...</Box>;
     }
 
+    const parsePercentage = (percentageString) => {
+        return parseFloat(percentageString.replace('%', ''));
+    };
+
     return (
         <Box p={4} borderWidth="1px" borderRadius="lg" overflow="hidden">
             <Text fontSize="xl" mb={4}>Market Overview</Text>
@@ -34,8 +38,8 @@ const MarketOverview = () => {
                 <Stat>
                     <StatLabel fontSize="sm">Last 5 Mins</StatLabel>
                     <StatNumber fontSize="sm">${marketData.last5minsMarketValue}</StatNumber>
-                    <StatNumber fontSize="sm" style={{ color: marketData.percentage5mins > 0 ? 'green' : 'red' }}>
-                         ({marketData.percentage5mins}%)
+                    <StatNumber fontSize="sm" style={{ color: parsePercentage(marketData.percentage5mins) >= 0 ? 'green' : 'red' }}>
+                        ({marketData.percentage5mins}%)
                     </StatNumber>
                 </Stat>
             </StatGroup>

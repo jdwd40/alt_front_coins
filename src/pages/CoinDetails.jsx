@@ -21,6 +21,10 @@ const CoinDetailsPage = () => {
     fetchCoinDetails();
   }, [coinId]);
 
+  const parsePercentage = (percentageString) => {
+    return parseFloat(percentageString.replace('%', ''));
+  };
+
   return (
     <Box p={4}>
       {coinDetails && (
@@ -35,9 +39,9 @@ const CoinDetailsPage = () => {
             <Text>Date Added: {new Date(coinDetails.date_added).toLocaleDateString()}</Text>
             <Text>All Time High: ${coinDetails.allTimeHigh}</Text>
             <Text>All Time Low: ${coinDetails.allTimeLow}</Text>
-            
-            <Text>Last 5mins Value: ${coinDetails.last5minsValue} (<span style={{ color: coinDetails.percentage5mins >= 0 ? 'green' : 'red' }}>{coinDetails.percentage5mins}</span>)</Text>
-            <Text>Last 10mins Value: ${coinDetails.last10minsValue} (<span style={{ color: coinDetails.percentage10mins >= 0 ? 'green' : 'red' }}>{coinDetails.percentage10mins}</span>)</Text>
+
+            <Text>Last 5mins Value: ${coinDetails.last5minsValue} (<span style={{ color: parsePercentage(coinDetails.percentage5mins) >= 0 ? 'green' : 'red' }}>{coinDetails.percentage5mins}</span>)</Text>
+            <Text>Last 10mins Value: ${coinDetails.last10minsValue} (<span style={{ color: parsePercentage(coinDetails.percentage10mins) >= 0 ? 'green' : 'red' }}>{coinDetails.percentage10mins}</span>)</Text>
             {/* ... and so on */}
             <Text>Event Type: {coinDetails.eventType}</Text>
             <Badge colorScheme={coinDetails.coinEventPositive ? 'green' : 'red'}>
