@@ -33,7 +33,7 @@ const MarketOverview = () => {
             <StatGroup>
                 <Stat>
                     <StatLabel>Total Market Cap</StatLabel>
-                    <StatNumber>${marketData.marketValue}</StatNumber>
+                    <StatNumber>£{marketData.marketValue}</StatNumber>
                 </Stat>
                 <Stat>
                     <StatLabel fontSize="sm">Last 5 Mins</StatLabel>

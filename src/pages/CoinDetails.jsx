@@ -33,7 +33,7 @@ const CoinDetailsPage = () => {
           <Text fontSize="md" color="gray.600">{coinDetails.description}</Text>
           <Divider my={4} />
           <Flex flexDirection="column" gap="2">
-            <Text>Current Price: ${coinDetails.current_price}</Text>
+            <Text>Current Price: £{coinDetails.current_price}</Text>
             <Text>Supply: {coinDetails.supply}</Text>
             <Text>Market Cap: ${coinDetails.market_cap}</Text>
             <Text>Date Added: {new Date(coinDetails.date_added).toLocaleDateString()}</Text>
@@ -47,6 +47,7 @@ const CoinDetailsPage = () => {
             <Badge colorScheme={coinDetails.coinEventPositive ? 'green' : 'red'}>
               {coinDetails.eventImpact.toUpperCase()} Impact
             </Badge>
+            <Text fontSize="sm">Event Duration: {coinDetails.eventDuration}</Text>
             <PriceHistoryGraph coinId={coinDetails.coin_id} />
           </Flex>
         </>
