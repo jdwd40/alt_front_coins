@@ -40,8 +40,8 @@ const CoinDetailsPage = () => {
             <Text fontSize="sm">All Time High: £{coinDetails.allTimeHigh}</Text>
             <Text fontSize="sm">All Time Low: £{coinDetails.allTimeLow}</Text>
 
-            <Text>Last 5mins Value: ${coinDetails.last5minsValue} (<span style={{ color: parsePercentage(coinDetails.percentage5mins) >= 0 ? 'green' : 'red' }}>{coinDetails.percentage5mins}</span>)</Text>
-            <Text>Last 10mins Value: ${coinDetails.last10minsValue} (<span style={{ color: parsePercentage(coinDetails.percentage10mins) >= 0 ? 'green' : 'red' }}>{coinDetails.percentage10mins}</span>)</Text>
+            <Text>Last 5mins Value: £{coinDetails.last5minsValue} (<span style={{ color: parsePercentage(coinDetails.percentage5mins) >= 0 ? 'green' : 'red' }}>{coinDetails.percentage5mins}</span>)</Text>
+            <Text>Last 10mins Value: £{coinDetails.last10minsValue} (<span style={{ color: parsePercentage(coinDetails.percentage10mins) >= 0 ? 'green' : 'red' }}>{coinDetails.percentage10mins}</span>)</Text>
             {/* ... and so on */}
             <Text fontSize="sm">Event Type: {coinDetails.eventType}</Text>
             <Badge colorScheme={coinDetails.coinEventPositive ? 'green' : 'red'}>
