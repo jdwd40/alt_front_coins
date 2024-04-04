@@ -8,7 +8,7 @@ const CoinCard = ({ coinData, onCoinSelect }) => {
                 <Image borderRadius="full" boxSize="50px" src={coinData.imageUrl || 'default_image_path'} alt={coinData.name} mr={4} />
                 <Box>
                     <Text fontSize="xl">{coinData.name}</Text>
-                    <Text>Current Price: ${coinData.current_price}</Text>
+                    <Text>Current Price: £{coinData.current_price}</Text>
                 </Box>
                 <Spacer />
                 <Button colorScheme="blue" onClick={() => onCoinSelect(coinData.coin_id)}>Details</Button>
