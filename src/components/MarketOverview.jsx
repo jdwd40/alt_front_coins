@@ -37,7 +37,7 @@ const MarketOverview = () => {
                 </Stat>
                 <Stat>
                     <StatLabel fontSize="sm">Last 5 Mins</StatLabel>
-                    <StatNumber fontSize="sm">${marketData.last5minsMarketValue}</StatNumber>
+                    <StatNumber fontSize="sm">£{marketData.last5minsMarketValue}</StatNumber>
                     <StatNumber fontSize="sm" style={{ color: parsePercentage(marketData.percentage5mins) >= 0 ? 'green' : 'red' }}>
                         ({marketData.percentage5mins}%)
                     </StatNumber>
@@ -46,7 +46,7 @@ const MarketOverview = () => {
             <Text mt={4} fontSize="md" fontWeight="bold">Top 3 Coins:</Text>
             <List spacing={2}>
                 {marketData.top3Coins.slice(0, 3).map((coin, index) => (
-                    <ListItem key={index}>{coin.name} - ${coin.price}</ListItem>
+                    <ListItem key={index}>{coin.name} - £{coin.price}</ListItem>
                 ))}
             </List>
             <Text mt={4} fontSize="md" fontWeight="bold">Event Info:</Text>
