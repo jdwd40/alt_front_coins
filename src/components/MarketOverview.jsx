@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Box, Flex, Text, Stat, StatLabel, StatNumber, StatGroup, List, ListItem } from '@chakra-ui/react';
+import { m } from 'framer-motion';
 
 const MarketOverview = () => {
     const [marketData, setMarketData] = useState(null);
@@ -43,13 +44,8 @@ const MarketOverview = () => {
                     </StatNumber>
                 </Stat>
             </StatGroup>
-            <Text mt={4} fontSize="md" fontWeight="bold">Top 3 Coins:</Text>
-            <List spacing={2}>
-                {marketData.top3Coins.slice(0, 3).map((coin, index) => (
-                    <ListItem key={index}>{coin.name} - £{coin.price}</ListItem>
-                ))}
-            </List>
-            <Text mt={4} fontSize="md" fontWeight="bold">Event Info:</Text>
+            <Text mt={4} fontSize="sm">Market ATH: £{marketData.allTimeHigh}</Text>
+            <Text mt={4} fontSize="sm" fontWeight="bold">Event Info:</Text>
             <Text fontSize="sm">Type: {marketData.event.type}</Text>
             <Text fontSize="sm">Start Time: {new Date(marketData.event.start_time).toLocaleTimeString()}</Text>
             <Text fontSize="sm">End Time: {new Date(marketData.event.end_time).toLocaleTimeString()}</Text>
