@@ -9,22 +9,23 @@ const Header = ({ onSignInClick, user, onSignOutClick }) => {
   return (
     <Flex as="header" align="center" justify="space-between" padding="0.5rem" bg="blue.500" color="white">
       <RouterLink to="/">
-        <Text fontSize="xl" fontWeight="bold">JDC</Text>
+        <Text fontSize="lg" fontWeight="bold">JDC</Text>
       </RouterLink>
+          <IconButton 
+            size="sm"
+            icon={colorMode === 'light' ? <FaMoon /> : <FaSun />} 
+            onClick={toggleColorMode} 
+            aria-label="Toggle theme" 
+            mr="2"
+          />
       <Box display="flex" alignItems="center">
-          <Text mr="2">Welcome, {user.username}</Text>
-        <IconButton 
-          icon={colorMode === 'light' ? <FaMoon /> : <FaSun />} 
-          onClick={toggleColorMode} 
-          aria-label="Toggle theme" 
-          mr="2"
-        />
         {user ? (
-          <>
-            <IconButton icon={<FaSignOutAlt />} onClick={onSignOutClick} aria-label="Sign out" />
+            <>
+            <Text fontSize="sm" mr="2">Welcome, {user.username}</Text>
+            <IconButton size="sm" icon={<FaSignOutAlt />} onClick={onSignOutClick} aria-label="Sign out" />
           </>
         ) : (
-          <IconButton icon={<FaSignInAlt />} onClick={onSignInClick} aria-label="Sign in" />
+            <IconButton size="sm" icon={<FaSignInAlt />} onClick={onSignInClick} aria-label="Sign in" />
         )}
       </Box>
     </Flex>

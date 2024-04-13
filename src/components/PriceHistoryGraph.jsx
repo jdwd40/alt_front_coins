@@ -11,7 +11,7 @@ const PriceHistoryGraph = ({ coinId }) => {
                 const response = await fetch(`http://localhost:9001/api/history/${coinId}`);
                 const data = await response.json();
                 
-                const thirtyMinutesAgo = new Date(new Date().getTime() - (30 * 60 * 1000));
+                const thirtyMinutesAgo = new Date(new Date().getTime() - (90 * 60 * 1000));
                 const filteredData = filterDataForThreeMinuteIntervals(data, thirtyMinutesAgo);
 
                 setPriceHistory(filteredData);

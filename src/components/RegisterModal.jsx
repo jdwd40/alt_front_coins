@@ -14,7 +14,7 @@ import {
   useToast
 } from '@chakra-ui/react';
 
-const SignInModal = ({ isOpen, onClose }) => {
+const RegisterModal = ({ isOpen, onClose }) => {
   const [formData, setFormData] = useState({ username: '', email: '', password: '' });
   const toast = useToast();
 
