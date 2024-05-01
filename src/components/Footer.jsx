@@ -3,7 +3,7 @@ import { Box, Text, Link, Flex, Spacer } from '@chakra-ui/react';
 
 const Footer = () => {
     return (
-      <Flex as="footer" align="center" justify="center" padding="1.5rem" bg="blue.500" color="white">
+      <Flex as="footer" align="center" justify="center" padding="1.5rem" bg="blue.500" color="white" paddingBottom="80px">
         <Text fontSize="sm">
           © {new Date().getFullYear()} JDCoinsApp. All Rights Reserved.
         </Text>

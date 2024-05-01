@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { Box, Text, Divider, Flex, Badge, Stat, StatLabel, StatNumber, StatHelpText, StatArrow } from '@chakra-ui/react';
+import { Box, Text, Divider, Flex, Badge, Stat, StatLabel, StatNumber, StatHelpText, StatArrow, Button, useDisclosure } from '@chakra-ui/react';
 import PriceHistoryGraph from '../components/PriceHistoryGraph';
+import TransactionModal from '../components/TransactionModal';
 
 const CoinDetailsPage = () => {
   const { coinId } = useParams();
   const [coinDetails, setCoinDetails] = useState(null);
+  const { isOpen, onOpen, onClose } = useDisclosure(); 
+
 
   useEffect(() => {
     const fetchCoinDetails = async () => {
@@ -88,6 +91,8 @@ const CoinDetailsPage = () => {
                     {coinDetails.percentage10mins}
                   </span>)
                 </Text>
+                <Button colorScheme="teal" onClick={onOpen}>Buy {coinDetails.name}</Button>
+          
               </Box>
             </Flex>
 
@@ -101,6 +106,13 @@ const CoinDetailsPage = () => {
             <Divider my={4} />
             <PriceHistoryGraph coinId={coinDetails.coin_id} />
           </Flex>
+
+          <TransactionModal
+            isOpen={isOpen}
+            onClose={onClose}
+            coin={coinDetails}
+            isBuying={true} 
+          />
         </>
       )}
     </Box>

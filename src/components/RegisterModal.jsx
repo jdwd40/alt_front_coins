@@ -57,7 +57,7 @@ const RegisterModal = ({ isOpen, onClose }) => {
     <Modal isOpen={isOpen} onClose={onClose}>
       <ModalOverlay />
       <ModalContent as="form" onSubmit={handleSubmit}>
-        <ModalHeader>Sign In</ModalHeader>
+        <ModalHeader>Register</ModalHeader>
         <ModalCloseButton />
         <ModalBody pb={6}>
           <FormControl>
@@ -87,4 +87,4 @@ const RegisterModal = ({ isOpen, onClose }) => {
   );
 };
 
-export default SignInModal;
+export default RegisterModal;

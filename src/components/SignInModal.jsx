@@ -13,10 +13,12 @@ import {
   Input,
   useToast
 } from '@chakra-ui/react';
+import { useAuth } from '../contexts/AuthContext';
 
 const SignInModal = ({ isOpen, onClose, onLoginSuccess }) => {
   const [loginData, setLoginData] = useState({ username: '', email: '', password: '' });
   const toast = useToast();
+  const { login } = useAuth();  // Use the login function from AuthContext
 
   const handleChange = (e) => {
     setLoginData({ ...loginData, [e.target.name]: e.target.value });
@@ -34,7 +36,8 @@ const SignInModal = ({ isOpen, onClose, onLoginSuccess }) => {
       if (!response.ok) {
         throw new Error(data.message || 'Login failed');
       }
-      onLoginSuccess(data); // Call the function passed in props on successful login
+
+      login(data); // Call the function passed in props on successful loging
       toast({
         title: 'Login successful',
         description: `Welcome back, ${data.username}!`,
@@ -63,33 +66,33 @@ const SignInModal = ({ isOpen, onClose, onLoginSuccess }) => {
         <ModalBody pb={6}>
           <FormControl>
             <FormLabel>Username</FormLabel>
-            <Input 
-              name="username" 
-              value={loginData.username} 
-              onChange={handleChange} 
-              placeholder="Enter your username" 
+            <Input
+              name="username"
+              value={loginData.username}
+              onChange={handleChange}
+              placeholder="Enter your username"
             />
           </FormControl>
 
           <FormControl mt={4}>
             <FormLabel>Email</FormLabel>
-            <Input 
-              name="email" 
-              value={loginData.email} 
-              type="email" 
-              onChange={handleChange} 
-              placeholder="Enter your email" 
+            <Input
+              name="email"
+              value={loginData.email}
+              type="email"
+              onChange={handleChange}
+              placeholder="Enter your email"
             />
           </FormControl>
 
           <FormControl mt={4}>
             <FormLabel>Password</FormLabel>
-            <Input 
-              name="password" 
-              value={loginData.password} 
-              type="password" 
-              onChange={handleChange} 
-              placeholder="Enter your password" 
+            <Input
+              name="password"
+              value={loginData.password}
+              type="password"
+              onChange={handleChange}
+              placeholder="Enter your password"
             />
           </FormControl>
         </ModalBody>
