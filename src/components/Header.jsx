@@ -12,19 +12,28 @@ const Header = ({ onSignInClick, user, onSignOutClick }) => {
         <Text fontSize="xl" fontWeight="bold">JDC</Text>
       </RouterLink>
       <Box display="flex" alignItems="center">
-          <Text mr="2">Welcome, {user.username}</Text>
-        <IconButton 
-          icon={colorMode === 'light' ? <FaMoon /> : <FaSun />} 
-          onClick={toggleColorMode} 
-          aria-label="Toggle theme" 
-          mr="2"
-        />
         {user ? (
           <>
+            <Text mr="2">Welcome, {user.username}</Text>
+            <IconButton 
+              icon={colorMode === 'light' ? <FaMoon /> : <FaSun />} 
+              onClick={toggleColorMode} 
+              aria-label="Toggle theme" 
+              mr="2"
+            />
             <IconButton icon={<FaSignOutAlt />} onClick={onSignOutClick} aria-label="Sign out" />
           </>
         ) : (
-          <IconButton icon={<FaSignInAlt />} onClick={onSignInClick} aria-label="Sign in" />
+          <>
+            <Text mr="2">Welcome, Guest</Text>
+            <IconButton 
+              icon={colorMode === 'light' ? <FaMoon /> : <FaSun />} 
+              onClick={toggleColorMode} 
+              aria-label="Toggle theme" 
+              mr="2"
+            />
+            <IconButton icon={<FaSignInAlt />} onClick={onSignInClick} aria-label="Sign in" />
+          </>
         )}
       </Box>
     </Flex>
